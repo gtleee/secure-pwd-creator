@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neumorphic Password Generator</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<div class="password-generator">
+  <div id="password-display" class="password-display">{{ password }}</div>
+  <div class="slider-container">
+    <input type="range" id="password-length" class="slider" min=1 max=24 value={{ length }}>
+    <input type="number" id="slider-value" min=1 max=24 value={{ length }}>
+  </div>
+  <div class="options-section">
+    <div class="checkbox-container">
+      <label for="uppercase" class="option-label">Uppercase</label>
+      <input type="checkbox" id="uppercase" name="uppercase" checked>
+    </div>
+    <div class="checkbox-container">
+      <label for="lowercase" class="option-label">Lowercase</label>
+      <input type="checkbox" id="lowercase" name="lowercase" checked>
+    </div>
+    <div class="checkbox-container">
+      <label for="numbers" class="option-label">Numbers</label>
+      <input type="checkbox" id="numbers" name="numbers" checked>
+    </div>
+    <div class="checkbox-container">
+      <label for="symbols" class="option-label">Symbols</label>
+      <input type="checkbox" id="symbols" name="symbols" checked>
+    </div>
+  </div>
+  <button id="copy-password" class="button">Copy Password</button>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <a href="https://github.com/gtleee/secure-pwd-creator" target="_blank">
+      <img src="{% static 'img/github-mark.svg' %}" alt="GitHub" />
+    </a>
+  </div>
+</footer>
+
+
+<script>
+  let generatePasswordURL = "{% url 'generate_password' %}";
+</script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
+
+</body>
+</html>
